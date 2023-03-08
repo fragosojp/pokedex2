@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -9,6 +10,6 @@ import { PokeListComponent } from './poke-list/poke-list.component';
 @NgModule({
   declarations: [PokeHeaderComponent, PokeSearchComponent, PokeListComponent],
   exports: [PokeHeaderComponent, PokeSearchComponent, PokeListComponent],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
 })
 export class SharedModule {}
