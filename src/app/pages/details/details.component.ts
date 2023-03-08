@@ -11,14 +11,17 @@ import { forkJoin } from 'rxjs';
 export class DetailsComponent implements OnInit {
   private urlPokemon: string = 'https://pokeapi.co/api/v2/pokemon';
   private urlName: string = 'https://pokeapi.co/api/v2/pokemon-species';
+
+  public pokemon: any;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private pokeApiService: PokeApiService
   ) {}
   ngOnInit(): void {
-    this.pokemon;
+    this.getPokemon;
   }
-  get pokemon() {
+  get getPokemon() {
     //Pegar o id da url
     const id = this.activatedRoute.snapshot.params['id'];
     //pegar o pokemon da api
@@ -28,8 +31,9 @@ export class DetailsComponent implements OnInit {
     //Pegar a especie do pokemon da api
     const name = this.pokeApiService.apiGetPokemon(`${this.urlName}/${id}`);
 
+    //faz a chamada em duas api ao mesmo tempo
     return forkJoin([pokemon, name]).subscribe((res) => {
-      console.log(res);
+      this.pokemon = res;
     });
   }
 }
