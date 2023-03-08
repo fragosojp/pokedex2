@@ -11,13 +11,18 @@ export class PokeListComponent implements OnInit {
 
   private setAllPokemons: any;
   public getAllPokemons: any;
+  public apiError: boolean = false;
 
   ngOnInit(): void {
-    this.pokeApiService.apiListAllPolemons.subscribe((res) => {
-      this.setAllPokemons = res.results;
-      this.getAllPokemons = res.results;
-      console.log(this.getAllPokemons);
-    });
+    this.pokeApiService.apiListAllPolemons.subscribe(
+      (res) => {
+        this.setAllPokemons = res.results;
+        this.getAllPokemons = res.results;
+      },
+      (error) => {
+        this.apiError = true;
+      }
+    );
   }
 
   public getSearch(value: string) {
