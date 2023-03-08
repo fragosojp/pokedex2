@@ -1,5 +1,5 @@
-import { PokeApiService } from 'src/app/service/pokeapi.service';
 import { Component, OnInit } from '@angular/core';
+import { PokeApiService } from 'src/app/service/pokeApi.service';
 
 @Component({
   selector: 'poke-list',
@@ -10,6 +10,6 @@ export class PokeListComponent implements OnInit {
   constructor(private pokeApiService: PokeApiService) {}
 
   ngOnInit(): void {
-    this.pokeApiService.apiListAllPolemons.subscribe((res) => res);
+    this.pokeApiService.apiListAllPolemons.subscribe((res) => console.log(res));
   }
 }
